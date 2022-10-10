@@ -65,7 +65,7 @@ class ElasticResult with _$ElasticResult {
               .convert(json[key]["snippet"])
               .replaceAll("\n", "")
               .trim();
-          print(text);
+          //print(text);
 
           final highlightExp = RegExp(r'<em>([^<]*)</em>');
 

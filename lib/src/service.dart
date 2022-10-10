@@ -45,8 +45,8 @@ class ElasticAppSearch {
     ElasticQuery query, [
     CancelToken? cancelToken,
   ]) async {
-    print("====== Query ======");
-    print(query.toJson());
+    // print("====== Query ======");
+    // print(query.toJson());
 
     final response = await _dio.post<Map>(
       _apiUrl(query.engine!.name),
@@ -60,8 +60,8 @@ class ElasticAppSearch {
       cancelToken: cancelToken,
     );
 
-    print("====== Response ======");
-    print(response);
+    // print("====== Response ======");
+    // print(response);
 
     if (response.statusCode == 200 && response.data != null) {
       ElasticResponse _response =
@@ -71,8 +71,8 @@ class ElasticAppSearch {
       if (disjunctiveQueries == null) return _response;
 
       for (final disjunctiveQuery in disjunctiveQueries) {
-        print("====== Disjunctive query ======");
-        print(disjunctiveQuery.toJson());
+        // print("====== Disjunctive query ======");
+        // print(disjunctiveQuery.toJson());
 
         final disjunctiveResponse = await _dio.post<Map>(
           _apiUrl(disjunctiveQuery.engine!.name),
@@ -85,8 +85,8 @@ class ElasticAppSearch {
           data: disjunctiveQuery.toJson(),
           cancelToken: cancelToken,
         );
-        print("====== Disjunctive Response ======");
-        print(disjunctiveResponse);
+        // print("====== Disjunctive Response ======");
+        // print(disjunctiveResponse);
 
         if (disjunctiveResponse.statusCode == 200 &&
             disjunctiveResponse.data != null) {
